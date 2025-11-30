@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>トイクラ｜Minecraft × 探究 × 個別コーチング</title>
+  <meta name="description" content="Minecraftを使った創造×探究の個別コーチングスクール「トイクラ」。十人十色の“好き”から、その子らしい未来をつくる学びを届けます。" />
+  <style>
+    :root {
+      --color-orange: #F7C32F;
+      --color-yellow-green: #B6D543;
+      --color-lemon: #F5E84B;
+      --color-mint: #4ECBB5;
+      --color-blue: #5FA5F4;
+      --color-sky: #56D5F0;
+      --color-red: #EB6761;
+      --color-pink: #E98BC6;
+      --color-purple: #A07AD8;
+      --color-light-pink: #FFAAA6;
+      --color-text: #3E4347;
+      --color-bg: #FAFAFA;
+      --color-border: #E3E5E8;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --max-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--color-text);
+      background: #FFFFFF;
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0 0 0.6em;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0 0 1em;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
+      border-bottom: 1px solid rgba(227,229,232,0.8);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      gap: 16px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: #7A7F84;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+      color: #555;
+    }
+
+    nav a:hover {
+      background: rgba(86,213,240,0.08);
+      color: #222;
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--color-mint);
+      color: #fff !important;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-cta:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      padding: 40px 0 56px;
+      background: radial-gradient(circle at top left, #FFEFD2 0, transparent 55%),
+                  radial-gradient(circle at top right, #E7F4FF 0, transparent 55%),
+                  #FFFFFF;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 12px;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(227,229,232,0.9);
+      font-size: 11px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .hero-eyebrow-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 3px;
+      background: linear-gradient(135deg,
+        var(--color-orange),
+        var(--color-yellow-green),
+        var(--color-blue),
+        var(--color-pink));
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 32px);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg,
+        var(--color-orange),
+        var(--color-pink),
+        var(--color-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 18px;
+    }
+
+    .hero-subline {
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 24px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--color-mint);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .hero-visual {
+      justify-self: center;
+    }
+
+    .hero-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(227,229,232,0.7);
+      max-width: 320px;
+    }
+
+    .hero-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .hero-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-text {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Sections */
+    section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .section-lead {
+      font-size: 14px;
+      color: #555;
+      max-width: 640px;
+    }
+
+    /* ABOUT（白） */
+    #about {
+      background: #FFFFFF;
+    }
+
+    /* 3つのToi（淡ミント） */
+    #toi {
+      background: rgba(200, 255, 236, 0.28);
+    }
+
+    /* FEATURES（淡ピンク） */
+    #features {
+      background: rgba(255, 182, 193, 0.22);
+    }
+
+    /* FOR KIDS（淡イエロー） */
+    section[id="features"] + section {
+      background: rgba(255, 244, 189, 0.28);
+    }
+
+    /* LESSON（淡ブルー） */
+    #lesson {
+      background: rgba(179, 231, 255, 0.25);
+    }
+
+    /* PRICING（淡ピンク再び） */
+    #pricing {
+      background: rgba(255, 182, 193, 0.22);
+    }
+
+    /* MESSAGE（淡ラベンダー） */
+    #message {
+      background: rgba(215, 198, 255, 0.22);
+    }
+
+    /* FAQ（淡ミント再び） */
+    #faq {
+      background: rgba(200, 255, 236, 0.28);
+    }
+
+    /* CTA（淡イエロー） */
+    #cta {
+      background: rgba(255, 244, 189, 0.28);
+    }
+
+    /* 3 Toi cards */
+    .toi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .toi-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.03);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(86,213,240,0.12);
+      color: #4E7BA8;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .features-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .feature-number {
+      font-size: 11px;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    /* “こんな子にぴったり” */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: #fff;
+    }
+
+    /* Lesson */
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .two-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .step-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .step-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+    }
+
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ランダム風カラー（ロゴカラーを順番に割り当て） */
+    .step-item:nth-child(1) .step-dot { background: var(--color-orange); }
+    .step-item:nth-child(2) .step-dot { background: var(--color-yellow-green); }
+    .step-item:nth-child(3) .step-dot { background: var(--color-lemon); }
+    .step-item:nth-child(4) .step-dot { background: var(--color-mint); }
+    .step-item:nth-child(5) .step-dot { background: var(--color-blue); }
+    .step-item:nth-child(6) .step-dot { background: var(--color-sky); }
+    .step-item:nth-child(7) .step-dot { background: var(--color-red); }
+    .step-item:nth-child(8) .step-dot { background: var(--color-pink); }
+    .step-item:nth-child(9) .step-dot { background: var(--color-purple); }
+    .step-item:nth-child(10) .step-dot { background: var(--color-light-pink); }
+    /* 11個目以降は繰り返し */
+    .step-item:nth-child(11) .step-dot { background: var(--color-orange); }
+    .step-item:nth-child(12) .step-dot { background: var(--color-yellow-green); }
+    .step-item:nth-child(13) .step-dot { background: var(--color-lemon); }
+    .step-item:nth-child(14) .step-dot { background: var(--color-mint); }
+    .step-item:nth-child(15) .step-dot { background: var(--color-blue); }
+    .step-item:nth-child(16) .step-dot { background: var(--color-sky); }
+    .step-item:nth-child(17) .step-dot { background: var(--color-red); }
+    .step-item:nth-child(18) .step-dot { background: var(--color-pink); }
+
+    /* Pricing */
+    .pricing-card {
+      max-width: 420px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 22px;
+      padding: 24px 20px 20px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(227,229,232,0.9);
+    }
+
+    .price-main {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .price-sub {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 12px;
+    }
+
+    .price-list {
+      font-size: 13px;
+      color: #555;
+      padding-left: 18px;
+    }
+
+    .price-note {
+      font-size: 11px;
+      color: #888;
+      margin-top: 8px;
+    }
+
+    /* Message */
+    .message-box {
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--color-border);
+      padding: 20px 20px 18px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+      font-size: 13px;
+    }
+
+    .message-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .message-role {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      border-radius: 18px;
+      border: 1px solid var(--color-border);
+      background: #fff;
+      padding: 14px 18px;
+      font-size: 13px;
+    }
+
+    .faq-item + .faq-item {
+      border-top: 1px solid #EEE;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: #555;
+    }
+
+    /* CTA bottom */
+    .cta-bottom {
+      text-align: center;
+      padding: 48px 0 40px;
+      background: linear-gradient(135deg, #FDF5D8, #E4F6FF);
+    }
+
+    .cta-bottom h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .cta-bottom p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--color-border);
+      padding: 16px 0 24px;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-wrap">
+        <img src="TOICRA.png" alt="TOICRA ロゴ" class="logo-mark" />
+        <div>
+          <div class="logo-text-main">トイクラ</div>
+          <div class="logo-text-sub">Toiro Craft Lab</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">トイクラとは</a></li>
+          <li><a href="#features">特徴</a></li>
+          <li><a href="#lesson">レッスン</a></li>
+          <li><a href="#pricing">料金</a></li>
+          <li><a href="#message">代表メッセージ</a></li>
+          <li><a href="#cta" class="nav-cta">無料体験レッスン</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-eyebrow">
+            
+            <span>Minecraft × 探究 × 個別コーチング</span>
+          </div>
+          <h1 class="hero-title">
+            十人十色の「好き」が、<br />
+            <span>その子らしい未来をつくる。</span>
+          </h1>
+          <p class="hero-subtitle">
+            好きなことを探究し、つくりながら自分の未来をひらく学びへ。
+          </p>
+          <p class="hero-subline">
+            Minecraft を使った “創造 × 探究” 個別コーチングスクール。<br />
+            子どもの「好き」から、考える力・つくる力・伝える力を育てます。
+          </p>
+          <div class="hero-cta-row">
+            <a href="#cta" class="btn-primary">無料体験レッスンを申し込む</a>
+            <a href="#cta" class="btn-secondary">LINEで相談する</a>
+          </div>
+          <p class="hero-note">
+            対象：小学生〜高校生／完全オンライン・1対1
+          </p>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-logo">
+            </div>
+            <div class="hero-card-title">十人十色の学びをデザインする、小さなラボ。</div>
+            <p class="hero-card-text">
+              マイクラの世界で、子どもたちが自分だけの作品や物語をつくりながら、
+              「これが好き」「これは違うかも」という感覚に気づいていく。
+              そのプロセスを、1対1でそっと伴走します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT：背景なし（白） -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">ABOUT</div>
+      <h2 class="section-title">トイクラとは</h2>
+      <p class="section-lead">
+            トイクラは、ただ「プログラミングを教える場所」ではなく、子どもが自分の未来を自分で選べるようになるための“原体験”をつくる場でありたいと思っています。
+          </p>
+    </div>
+  </div>
+</section>
+
+<!-- 3つのToi：背景色あり（単独セクション） -->
+<section id="toi">
+  <div class="container">
+    
+    <!-- 見出し -->
+    <div class="section-header">
+      <div class="section-eyebrow">3つの Toi</div>
+      <h3 class="section-title" style="font-size:18px;">
+        トイクラが大切にしている、3つの「Toi」
+      </h3>
+    </div>
+
+    <!-- 3つのカード -->
+    <div class="toi-grid">
+
+      <!-- Toiro -->
+      <div class="card">
+        <div class="card-header">
+          <span class="chip">Toiro</span>
+          <div class="card-title">十色：子どもの“色”を見つけて伸ばす。</div>
+        </div>
+        <div class="card-body">
+          子どもは十人十色。マイクラの世界では、その子ならではの得意や夢中の種が自然とあらわれます。
+          トイクラは、その“色”を大切に伸ばしていきます。
+        </div>
+      </div>
+
+      <!-- 問い（Toi） -->
+      <div class="card">
+        <div class="card-header">
+          <span class="chip">Toi</span>
+          <div class="card-title">問い：好奇心から始まる探究の学び。</div>
+        </div>
+        <div class="card-body">
+          子どもの学びは「どうして？」「やってみたい！」という小さな問いから動き出します。
+          その問いを一緒に育てながら、学びを自分ごとへと深めていきます。
+        </div>
+      </div>
+
+      <!-- Toy（おもちゃ） -->
+      <div class="card">
+        <div class="card-header">
+          <span class="chip">Toy</span>
+          <div class="card-title">おもちゃ：遊びがそのまま学びになる。</div>
+        </div>
+        <div class="card-body">
+          Minecraft で遊びながら学び、手を動かすほどわくわくが深まる。
+          遊びの延長で始めたはずの世界づくりが、
+          気づけば数ヶ月にわたる大作になり、作品発表につながることも。
+          夢中になれる遊びだからこそ、自然と学びが育ちます。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    <!-- FEATURES -->
+    <section id="features" class="section-bg-soft">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">FEATURES</div>
+          <h2 class="section-title">トイクラの特徴</h2>
+          <p class="section-lead">
+            「プログラミング教室」ではなく、「好き・問い・創造」に寄り添うコーチング型の学び。
+            子ども一人ひとりのペースと興味に合わせて、マイクラの世界で探究を深めていきます。
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="card">
+            <div class="feature-number">Feature 01</div>
+            <div class="card-title">毎週1対1の“コーチング型レッスン”</div>
+            <p class="card-body">
+              子どもと同じ目線で問いを立て、進め方を一緒に決めていくスタイル。
+              「やらされる勉強」ではなく、「やってみたい」から始まる学びを大切にします。
+            </p>
+          </div>
+          <div class="card">
+            <div class="feature-number">Feature 02</div>
+            <div class="card-title">マイクラを“表現ツール”として活用</div>
+            <p class="card-body">
+              建築、ワールド制作、コマンド、ストーリーづくりなど、
+              マイクラをただのゲームではなく「自分の世界を表現するキャンバス」として扱います。
+            </p>
+          </div>
+          <div class="card">
+            <div class="feature-number">Feature 03</div>
+            <div class="card-title">探究 × SDGs × AIにも対応</div>
+            <p class="card-body">
+              SDGs や身の回りのテーマをマイクラで表現したり、AIでアイデア出しをしたり。
+              「知る → 考える → つくる → 伝える」の探究サイクルを自然に体験できます。
+            </p>
+          </div>
+          <div class="card">
+            <div class="feature-number">Feature 04</div>
+            <div class="card-title">マイクラカップなどのコンテスト制作もサポート</div>
+            <p class="card-body">
+              日々のレッスンで育ててきた力をもとに、コンテスト出場や作品応募にもチャレンジ可能。
+              短期講座などと組み合わせて、本気の制作にも取り組めます。
+            </p>
+          </div>
+          <div class="card">
+            <div class="feature-number">Feature 05</div>
+            <div class="card-title">1人ひとりに合わせた完全オーダーメイド</div>
+            <p class="card-body">
+              マイクラ歴、性格、興味、特性などをふまえ、
+              「その子の今」に合ったカリキュラムを一緒に形にしていきます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR WHO -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">FOR KIDS</div>
+          <h2 class="section-title">こんな子にぴったり</h2>
+          <p class="section-lead">
+            「マイクラが好き」「何かつくるのが好き」「自分のペースで学びたい」──
+            <br>トイクラは、そんな子どもたちのための小さなラボです。
+          </p>
+        </div>
+        <div class="tags">
+          <span class="tag">マイクラが大好き</span>
+          <span class="tag">ものづくり・創造が好き</span>
+          <span class="tag">自分のペースで学びたい</span>
+          <span class="tag">探究・自由研究に興味がある</span>
+          <span class="tag">作品をつくりきる体験をしたい</span>
+          <span class="tag">自信をつけたい</span>
+          <span class="tag">マイクラカップに挑戦したい</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSON -->
+    <section id="lesson" class="section-bg-soft">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">LESSON</div>
+          <h2 class="section-title">レッスン内容（月4回・1対1）</h2>
+          <p class="section-lead">
+            毎週1回・60分の完全マンツーマン。オンラインでコーチングしながら、
+            マイクラの世界で作品制作や探究を進めていきます。
+          </p>
+        </div>
+
+        <div class="two-column">
+          <div>
+            <h3 style="font-size:16px; margin-bottom:8px;">どんなことが学べるの？</h3>
+            <div class="step-list">
+              <div class="step-item"><span class="step-dot"></span><span>建築</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>コマンド</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>ミニゲーム作り</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>データパック開発</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>アドオン開発</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>makecode</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>JavaScript</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>VS Code</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>GitHub</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>ストーリー作り</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>AI分析</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>動画制作</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>3Dモデリング</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>Tinker CAD</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>Blender</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>マイクラカップ</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>発表練習</span></div>
+              <div class="step-item"><span class="step-dot"></span><span>Googleスライド作成</span></div>
+              
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <div class="card-title" style="margin-bottom:6px;">レッスン概要</div>
+              <p class="card-body" style="margin-bottom:10px;">
+                ・形式：オンライン（Zoom + Minecraft）<br />
+                ・時間：1回60分 × 月4回（平日17:00〜19:00の間で曜日固定）<br />
+                ・形態：1対1（完全マンツーマン）<br />
+                ・対象：小学生〜高校生
+              </p>
+              <p class="card-body">
+                宿題は基本的になし。<br />
+                「もっとやりたい！」子には、次回までにやってみるチャレンジを一緒に決めていきます。
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header" style="text-align:center;">
+          <div class="section-eyebrow">PRICING</div>
+          <h2 class="section-title">料金プラン</h2>
+          
+        </div>
+
+        <div class="pricing-card">
+          <h3 style="font-size:16px; margin-bottom:10px;">月額コース（月4回）</h3>
+          <div class="price-main">月額 28,600円（税込）</div>
+          <div class="price-sub">（税抜 26,000円）</div>
+          <ul class="price-list">
+            <li>毎週1回・60分</li>
+            <li>完全マンツーマン</li>
+            <li>オンライン（Zoom + Minecraft）</li>
+            
+          </ul>
+          <p class="price-note">
+            ・振替は前日までのご連絡で月1回まで可能です。<br />
+            ・PC環境やマイクラのバージョンについては、体験時にご相談ください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MESSAGE (保護者向け) -->
+    <section id="message" class="section-bg-soft">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">MESSAGE</div>
+          <h2 class="section-title">保護者の方へ</h2>
+          <p class="section-lead">
+            <span style="white-space:nowrap;">トイクラは、ただ「プログラミングを教える場所」ではなく、
+            子どもが自分の未来を自分で選べるようになるための</span><br />“原体験”をつくる場でありたいと思っています。
+          </p>
+        </div>
+
+        <div class="message-box">
+          <div class="message-name">代表メッセージ</div>
+          <div class="message-role">トイクラ（Toiro Craft Lab）</div>
+          <p>
+            私は、教育というものは「その場でスキルを身につけて終わるもの」ではなく、
+            <strong>“自分で積み重ねていくプロセス”</strong>だと考えています。
+          </p>
+          <p>
+            小学生のころに触れた学びが、将来ふと思い出されて<br />
+            「またやってみようかな」「もっと知りたい」と、自分で選んで歩き出す。<br />
+            その“選べる感覚”こそが、子どもの未来を支える力になると信じています。
+          </p>
+          <p>
+            だからトイクラでは、まず<strong>「楽しい」「できた」「またやりたい」</strong>という原体験を
+            つくることを大切にしています。
+          </p>
+          <p>
+            そして、やってみた結果「これは好きじゃなかった」「これは向いていなかった」という気づきも
+            同じくらい大切だと考えています。<br />
+            好きと嫌い、得意と苦手、その輪郭が少しずつ見えていくことが、
+            <strong>自己理解を深め、未来を選択する力</strong>につながるからです。
+          </p>
+          <p>
+            Minecraft の世界は、その子の“十人十色の色”が自然と現れ、世界を創り、自分を試し、
+            問いを立て、表現できる場所です。<br />
+            トイクラは、そんな原体験を積み上げていくための、小さな“未来のラボ”でありたいと思っています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+        <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">FAQ</div>
+          <h2 class="section-title">よくあるご質問</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">Q. マイクラ初心者でも大丈夫ですか？</div>
+            <div class="faq-a">A. はい、大丈夫です。基本操作から一緒にゆっくり慣れていきます。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Q. どんなパソコンや端末が必要ですか？</div>
+            <div class="faq-a">A. PC版（Java版またはBedrock版）を推奨していますが、環境に合わせて相談可能です。</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Q. マイクラカップに参加したいのですが、対応してもらえますか？</div>
+            <div class="faq-a">A. 月額コースでの基礎づくりに加え、別途短期講座などを組み合わせて制作サポートを行う予定です。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BOTTOM -->
+    <section id="cta" class="cta-bottom">
+      <div class="container" style="text-align:center;">
+        <h2>まずは無料体験レッスンから。</h2>
+        <p>
+          「好き」が、その子らしい未来をつくりはじめます。<br />
+          お子さんに合うかどうか、ぜひ一度お話してみましょう。
+        </p>
+        <div class="cta-buttons">
+          <a href="https://example.com/form" class="btn-primary">無料体験レッスンを申し込む</a>
+          <a href="https://example.com/line" class="btn-secondary">LINEで相談する</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> トイクラ（Toiro Craft Lab）</div>
+      <div class="footer-links">
+        <a href="#top">トップに戻る</a>
+        <!-- 必要に応じてリンク追加
+        <a href="/terms">利用規約</a>
+        <a href="/privacy">プライバシーポリシー</a>
+        -->
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
